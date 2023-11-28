@@ -2,11 +2,10 @@ import 'package:cinescape/widget/getDetails.dart';
 import 'package:flutter/material.dart';
 
 class upcomingMovieWidget extends StatelessWidget {
-  const upcomingMovieWidget({
-    super.key,required this.snapshot
-  });
+  const upcomingMovieWidget({super.key, required this.snapshot});
 
   final AsyncSnapshot snapshot;
+
   @override
   Widget build(BuildContext context) {
     return SizedBox(
@@ -16,7 +15,7 @@ class upcomingMovieWidget extends StatelessWidget {
       child: ListView.builder(
         scrollDirection: Axis.horizontal,
         physics: const BouncingScrollPhysics(),
-        itemCount:5,
+        itemCount: 5,
         itemBuilder: (context, index) {
           return Padding(
             padding: const EdgeInsets.all(8.0),
@@ -25,18 +24,18 @@ class upcomingMovieWidget extends StatelessWidget {
               children: [
                 GestureDetector(
                   onTap: () {
-                    Navigator
-                        .of(context)
-                        .push(MaterialPageRoute(builder: (context) =>
-                        GetDetails(name: snapshot.data[index]['name'],
-                          image: snapshot.data[index]['image']['original'],
-                          language: snapshot.data[index]['language'],
-                          premiered: snapshot.data[index]['premiered'],
-                          rating: snapshot.data[index]['rating']['average']
-                              .toString(),
-                          summary: snapshot.data[index]['summary'],
-                          type: snapshot.data[index]['type'],
-                          genres: getGenres(index),)));
+                    Navigator.of(context).push(MaterialPageRoute(
+                        builder: (context) => GetDetails(
+                              name: snapshot.data[index]['name'],
+                              image: snapshot.data[index]['image']['original'],
+                              language: snapshot.data[index]['language'],
+                              premiered: snapshot.data[index]['premiered'],
+                              rating: snapshot.data[index]['rating']['average']
+                                  .toString(),
+                              summary: snapshot.data[index]['summary'],
+                              type: snapshot.data[index]['type'],
+                              genres: getGenres(index),
+                            )));
                   },
                   child: Container(
                     decoration: BoxDecoration(
@@ -52,11 +51,21 @@ class upcomingMovieWidget extends StatelessWidget {
                     ),
                     width: 150,
                     height: 230,
-                    child: Image.network(snapshot.data[index]['image']['original'] ?? snapshot.data[index]['image']['medium'] ,filterQuality: FilterQuality.high,fit: BoxFit.cover,),
+                    child: Image.network(
+                      snapshot.data[index]['image']['original'] ??
+                          snapshot.data[index]['image']['medium'],
+                      filterQuality: FilterQuality.high,
+                      fit: BoxFit.cover,
+                    ),
                   ),
                 ),
-                const SizedBox(height: 8,),
-                Text(snapshot.data[index]['name'],style: const TextStyle(fontSize: 14,fontFamily: 'Satoshi'),),
+                const SizedBox(
+                  height: 8,
+                ),
+                Text(
+                  snapshot.data[index]['name'],
+                  style: const TextStyle(fontSize: 14, fontFamily: 'Satoshi'),
+                ),
                 SizedBox(
                   //  color: Colors.orange,
                   width: 160,
@@ -64,26 +73,43 @@ class upcomingMovieWidget extends StatelessWidget {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Text(snapshot.data[index]['language'],style: const TextStyle(fontSize: 10,fontFamily: 'Satoshi',color: Colors.white38),),
-                      TextButton.icon(onPressed: (){}, icon: Icon(Icons.star,color: Colors.yellow.withOpacity(0.4),size: 20,),label:const Text("-" ,style: TextStyle(fontSize: 10,fontFamily: 'Satoshi',color: Colors.white38),),)
+                      Text(
+                        snapshot.data[index]['language'],
+                        style: const TextStyle(
+                            fontSize: 10,
+                            fontFamily: 'Satoshi',
+                            color: Colors.white38),
+                      ),
+                      TextButton.icon(
+                        onPressed: () {},
+                        icon: Icon(
+                          Icons.star,
+                          color: Colors.yellow.withOpacity(0.4),
+                          size: 20,
+                        ),
+                        label: const Text(
+                          "-",
+                          style: TextStyle(
+                              fontSize: 10,
+                              fontFamily: 'Satoshi',
+                              color: Colors.white38),
+                        ),
+                      )
                     ],
                   ),
                 ),
-
-
-
               ],
             ),
           );
-        },),
+        },
+      ),
     );
   }
+
   getGenres(int index) {
     List genres = [];
     var query = snapshot.data[index]['genres'];
-    query.forEach(
-            (x) => genres.add(snapshot.data[index]['genres'])
-    );
+    query.forEach((x) => genres.add(snapshot.data[index]['genres']));
 
     return genres;
   }

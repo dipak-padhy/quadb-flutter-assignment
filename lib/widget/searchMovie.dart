@@ -197,25 +197,3 @@ class SearchMovie extends SearchDelegate {
   }
 
 }
-
-/*Card(
-child: ListTile(
-title: Row(
-mainAxisAlignment: MainAxisAlignment.spaceBetween,
-children: [
-Container(
-height: 200,
-width: 60,
-decoration: BoxDecoration(
-borderRadius: BorderRadius.circular(8)
-),
-child: Image.network(data[index]['image']['original']),
-),
-const SizedBox(width: 12,),
-Text(data[index]['name']),
-Text(data[index]['language'])
-],
-),
-),);*/
-
-

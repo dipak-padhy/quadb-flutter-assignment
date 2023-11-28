@@ -1,6 +1,9 @@
 # cinescape
+Presenting You Cinescape :-
+A Flutter project which features multiple shows using tv-maze api inside a beautiful UI.
 
-A new Flutter project which features multiple shows using tv-maze api inside a beautiful UI.
+# Video Drive Link :-
+https://drive.google.com/file/d/14sMQyJVnyXI1orMV2BpBvWZtLIy60AIz/view?usp=drivesdk
 
 ## Getting Started
 

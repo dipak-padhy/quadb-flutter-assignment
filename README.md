@@ -1,6 +1,6 @@
 # cinescape
 
-A new Flutter project.
+A new Flutter project which features multiple shows using tv-maze api inside a beautiful UI.
 
 ## Getting Started
 
